@@ -5,6 +5,7 @@ import Data.Maybe
 import Game
 import Grid
 import RunGame
+import System.Environment
 --import Main 
 
 canWidth,canHeight :: Num a => a
@@ -13,7 +14,11 @@ canHeight = 500
 
 
 main :: IO ()
-main = startGUI defaultConfig setup
+main =
+  do
+    port <- getEnv "PORT"
+    putStrLn port
+    startGUI defaultConfig setup
 
 setup :: Window -> UI ()
 setup window =
