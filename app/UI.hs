@@ -5,12 +5,15 @@ import Safe          (readMay)
 
 import qualified Graphics.UI.Threepenny as UI
 import Graphics.UI.Threepenny.Core
-
+import System.Environment
 {-----------------------------------------------------------------------------
     Main
 ------------------------------------------------------------------------------}
 main :: IO ()
-main = startGUI defaultConfig setup
+main = 
+  do
+    setEnv "ADDR" "0.0.0.0"
+    startGUI defaultConfig {jsAddr = Nothing} setup
 
 setup :: Window -> UI ()
 setup window = void $ do
