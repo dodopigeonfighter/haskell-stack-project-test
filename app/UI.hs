@@ -2,7 +2,6 @@ module Main where
 
 import Control.Concurrent
 import System.IO
-import ThreepennyPages
 import Graphics.UI.Threepenny.Core as UI
 import qualified Graphics.UI.Threepenny as UI
 import Data.Maybe
@@ -10,6 +9,7 @@ import Game
 import Grid
 import RunGame
 import System.Environment
+import ThreepennyPages
 
 canWidth,canHeight :: Num a => a
 canWidth  = 500
@@ -20,20 +20,15 @@ main :: IO ()
 main =
   do
     threadDelay 1000000 --sleep for a million microseconds, or one second
-    addr <- getEnv "ADDR"
+    setEnv "ADDR" "0.0.0.0"
     port <- getEnv "PORT"
-    putStrLn addr
-    putStrLn port
-    print port
-    putStrLn "--- testing blabla"
+    System.IO.putStrLn port
+    System.IO.putStrLn "--- testing blabla"
     hFlush stdout
     threadDelay 1000000 --sleep for a million microseconds, or one second
-    startGUI defaultConfig 
-        { jsPort       = Just 8023
-        , jsAddr     = Nothing
-        } setup
+    startGUI defaultConfig {jsAddr     = Nothing} setup
 
-setup :: Window -> UI ()
+setup :: UI.Window -> UI ()
 setup window =
   
   do -- Create them user interface elements
