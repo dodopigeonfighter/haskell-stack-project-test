@@ -21,7 +21,7 @@ main =
     putStrLn port
     print port
     putStrLn "--- testing blabla"
-    startGUI defaultConfig setup
+    --startGUI defaultConfig setup
 
 setup :: Window -> UI ()
 setup window =
