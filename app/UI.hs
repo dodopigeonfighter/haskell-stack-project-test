@@ -1,5 +1,7 @@
 module Main where  
 
+import Control.Concurrent
+import System.IO
 import ThreepennyPages
 import Graphics.UI.Threepenny.Core as UI
 import qualified Graphics.UI.Threepenny as UI
@@ -17,11 +19,14 @@ canHeight = 500
 main :: IO ()
 main =
   do
+    threadDelay 1000000 --sleep for a million microseconds, or one second
     port <- getEnv "PORT"
     putStrLn port
     print port
     putStrLn "--- testing blabla"
-    --startGUI defaultConfig setup
+    hFlush stdout
+    threadDelay 1000000 --sleep for a million microseconds, or one second
+    startGUI defaultConfig setup
 
 setup :: Window -> UI ()
 setup window =
