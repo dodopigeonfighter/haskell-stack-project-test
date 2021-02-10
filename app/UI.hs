@@ -1,7 +1,5 @@
 module Main where  
 
-import Control.Concurrent
-import System.IO
 import Graphics.UI.Threepenny.Core as UI
 import qualified Graphics.UI.Threepenny as UI
 import Data.Maybe
@@ -19,16 +17,10 @@ canHeight = 500
 main :: IO ()
 main =
   do
-    threadDelay 1000000 --sleep for a million microseconds, or one second
     setEnv "ADDR" "0.0.0.0"
-    port <- getEnv "PORT"
-    System.IO.putStrLn port
-    System.IO.putStrLn "--- testing blabla"
-    hFlush stdout
-    threadDelay 1000000 --sleep for a million microseconds, or one second
-    startGUI defaultConfig {jsAddr     = Nothing} setup
+    startGUI defaultConfig {jsAddr = Nothing} setup
 
-setup :: UI.Window -> UI ()
+setup :: Window -> UI ()
 setup window =
   
   do -- Create them user interface elements
