@@ -18,6 +18,7 @@ main =
   do
     port <- getEnv "PORT"
     putStrLn port
+    putStrLn "--- testing blabla"
     startGUI defaultConfig setup
 
 setup :: Window -> UI ()
