@@ -1,3 +1,5 @@
+module Main where  
+
 import ThreepennyPages
 import Graphics.UI.Threepenny.Core as UI
 import qualified Graphics.UI.Threepenny as UI
@@ -6,7 +8,6 @@ import Game
 import Grid
 import RunGame
 import System.Environment
---import Main 
 
 canWidth,canHeight :: Num a => a
 canWidth  = 500
@@ -18,6 +19,7 @@ main =
   do
     port <- getEnv "PORT"
     putStrLn port
+    print port
     putStrLn "--- testing blabla"
     startGUI defaultConfig setup
 
