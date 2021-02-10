@@ -20,13 +20,18 @@ main :: IO ()
 main =
   do
     threadDelay 1000000 --sleep for a million microseconds, or one second
+    addr <- getEnv "ADDR"
     port <- getEnv "PORT"
+    putStrLn addr
     putStrLn port
     print port
     putStrLn "--- testing blabla"
     hFlush stdout
     threadDelay 1000000 --sleep for a million microseconds, or one second
-    startGUI defaultConfig setup
+    startGUI defaultConfig 
+        { jsPort       = Just 8023
+        , jsAddr     = Nothing
+        } setup
 
 setup :: Window -> UI ()
 setup window =
